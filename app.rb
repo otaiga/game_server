@@ -28,7 +28,10 @@ get '/json_test.json' do
 end
 
 get '/player' do
-  redis.get('state')
+  content_type :json
+  {
+    state: redis.get('state')
+  }
 end
 
 post '/update_player' do
