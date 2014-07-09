@@ -24,23 +24,32 @@ get '/json_test.json' do
   content_type :json
   {
     state: [
-      ['Right', 5.0],
-      ['Right', 5.0],
-      ['Right', 5.0]
+      'Right',
+      5.0,
+      'Right',
+      5.0],
+      'Right',
+      5.0
     ]
   }.to_json
 end
 
 get '/player' do
   content_type :json
+  commands = JSON.parse(redis.get('state'))
   {
-    state: redis.get('state')
+    state: commands['commands']
   }.to_json
 end
 
 post '/update_player' do
-  redis.set('state', params[:player])
-  redis.expire('state', 5)
+  commands = []
+  array = params[:player].split(', ')
+  array.each do |item|
+    commands << item.split(':')
+  end
+  redis.set('state', {commands: commands}.to_json)
+  redis.expire('state', 10)
   redirect '/'
 end
 
