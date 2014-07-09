@@ -17,7 +17,17 @@ helpers do
 end
 
 get '/' do
+  erb :index
+end
+
+get '/player' do
   redis.get('state')
+end
+
+post '/update_player' do
+  redis.set('state', params[:player])
+  redis.expire('state', 5)
+  redirect '/'
 end
 
 post '/update' do
