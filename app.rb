@@ -23,7 +23,11 @@ end
 get '/json_test.json' do
   content_type :json
   {
-    state: ['Right 5', 'Right 5']
+    state: [
+      ['Right', 5],
+      ['Right', 5],
+      ['Right', 5]
+    ]
   }.to_json
 end
 
