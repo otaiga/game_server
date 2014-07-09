@@ -53,7 +53,7 @@ post '/update_player' do
     commands << item.split(':')
   end
   redis.set('state', {commands: commands}.to_json)
-  redis.expire('state', 10)
+  redis.expire('state', 5)
   redirect '/'
 end
 
