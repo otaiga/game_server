@@ -23,8 +23,11 @@ end
 post '/update' do
   data = JSON.parse(request.body.read, symbolize_names: true)
   redis.set('state', data[:state])
+  redis.expire('state', 5)
 end
 
 post '/sms_update' do
-  redis.set('state', data) if data
+  if data
+    redis.set('state', data)
+    redis.expire('state', 5)
 end
