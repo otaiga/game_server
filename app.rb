@@ -34,9 +34,14 @@ end
 get '/player' do
   content_type :json
   commands = JSON.parse(redis.get('state'))
-  {
-    state: commands['commands']
-  }.to_json
+  if commands && commands.keys('commands')
+    {
+      state: commands['commands']
+    }.to_json
+  else
+    {
+      state: ''
+    }.to_json
 end
 
 post '/update_player' do
