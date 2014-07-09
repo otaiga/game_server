@@ -26,7 +26,7 @@ get '/json_test.json' do
     state: [
       'Right',
       5.0,
-      'Right',
+      'Left',
       5.0,
       'Right',
       5.0
