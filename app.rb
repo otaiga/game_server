@@ -31,7 +31,7 @@ get '/player' do
   content_type :json
   {
     state: redis.get('state')
-  }
+  }.to_json
 end
 
 post '/update_player' do
