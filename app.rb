@@ -27,7 +27,7 @@ get '/json_test.json' do
       'Right',
       5.0,
       'Right',
-      5.0],
+      5.0,
       'Right',
       5.0
     ]
