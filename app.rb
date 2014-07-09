@@ -53,19 +53,19 @@ post '/update_player' do
     commands << item.split(':')
   end
   redis.set('state', {commands: commands}.to_json)
-  redis.expire('state', 5)
+  redis.expire('state', 15)
   redirect '/'
 end
 
 post '/update' do
   data = JSON.parse(request.body.read, symbolize_names: true)
   redis.set('state', data[:state])
-  redis.expire('state', 5)
+  redis.expire('state', 15)
 end
 
 post '/sms_update' do
   if data
     redis.set('state', data)
-    redis.expire('state', 5)
+    redis.expire('state', 15)
   end
 end
