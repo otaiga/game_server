@@ -30,4 +30,5 @@ post '/sms_update' do
   if data
     redis.set('state', data)
     redis.expire('state', 5)
+  end
 end
