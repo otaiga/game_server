@@ -1,3 +1,10 @@
 require './app'
 $stdout.sync = true
-run Sinatra::Application
+
+map '/' do
+  run Controllers::MainController
+end
+
+map '/robots' do
+  run Controllers::RobotsController
+end

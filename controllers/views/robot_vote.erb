@@ -1,0 +1,19 @@
+<h1> Robot Vote!</h1>
+<form method="post" action="update_settings">
+  <fieldset><legend>Configuration</legend>
+    <div class="form-field">
+      <label for="question">Your Question</label>
+      <input type="text" name="question" id="text-input" placeholder="Type your question" />
+    </div>
+    <div class="form-field">
+      <label for="time_period">Voting Time period</label>
+      <input type="text" name="time_period" id="text-input" placeholder="Enter in minutes" />
+    </div>
+  </fieldset>
+  <input type="submit" value="Submit input" />
+</form>
+
+
+<form method="post" action="reset_settings">
+  <input type="submit" value="RESET ALL CONFIGURATION" />
+</form>  
