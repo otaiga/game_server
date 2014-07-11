@@ -9,12 +9,14 @@ module Controllers
     get '/red' do
       state = redis.get('red')
       return no_data_response unless state
+      redis.del('red')
       state
     end
 
     get '/blue' do
       state = redis.get('blue')
       return no_data_response unless state
+      redis.del('blue')
       state
     end
 
